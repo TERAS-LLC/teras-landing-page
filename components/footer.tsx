@@ -22,7 +22,11 @@ export function Footer() {
                 <div className="space-y-2 text-sm font-light text-background/80">
                   <p>Representative: Takamichi Tatsumoto</p>
                   <p>Email: contact@teras.tech</p>
-                  <p>Location: 7F, Ichigo Tenjin North Bldg., 4-6-28 Tenjin, Chuo-ku, Fukuoka-shi, Fukuoka, Japan</p>
+                  <div>
+                    <p>Location:</p>
+                    <p className="mt-1">7F, Ichigo Tenjin North Bldg., 4-6-28 Tenjin, Chuo-ku, Fukuoka-shi, Fukuoka, Japan</p>
+                    <p className="text-background/50 text-xs mt-0.5">福岡県福岡市中央区天神4-6-28 いちご天神ノースビル 7F</p>
+                  </div>
                 </div>
               </div>
 
