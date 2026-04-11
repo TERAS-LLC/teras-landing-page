@@ -23,11 +23,12 @@ export function PhilosophySection() {
 
               <div className="space-y-6 text-sm md:text-base font-light text-foreground leading-relaxed">
                 <p>
-                  TERASの名は、ギリシャ語で「驚異」を意味するΤέραςに由来します。大規模で複雑なシステムの課題に正面から取り組み、明確な構造へと整理していくことが私たちの仕事です。
+                  TERASの名は、ギリシャ語で「驚異・怪物」を意味するΤέραςに由来します。大規模で複雑なシステムの課題に正面から取り組み、明確な構造へと整理していくことが私たちの仕事です。
                 </p>
                 <p className="text-foreground italic text-xs md:text-sm">
-                  The name TERAS comes from the Greek word Τέρας, meaning "wonder." Our work is to take on the
-                  challenges of large, complex systems and organize them into clear, workable structures.
+                  The name TERAS comes from the Greek word Τέρας, meaning &quot;wonder&quot; or &quot;monster.&quot; Our work
+                  is to take on the challenges of large, complex systems and organize them into clear, workable
+                  structures.
                 </p>
               </div>
             </div>
