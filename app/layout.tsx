@@ -16,20 +16,7 @@ export const metadata: Metadata = {
     "BtoB SaaS開発における設計・組織づくりを支援します。ドメイン駆動設計やチームトポロジーを活用し、保守性と拡張性の高いシステム構築をお手伝いします。",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/favicon-32x32.png",
     apple: "/apple-icon.png",
   },
 }
