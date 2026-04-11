@@ -11,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "LLC TERAS - Traces of the Future",
+  title: "LLC TERAS - BtoB SaaS開発支援",
   description:
-    "制御されていないが、壊れてはいない。観測不能なほどの複雑性を、ある瞬間の『美』として定着させる。BtoB SaaS開発支援の新たな地平。",
+    "BtoB SaaS開発における設計・組織づくりを支援します。ドメイン駆動設計やチームトポロジーを活用し、保守性と拡張性の高いシステム構築をお手伝いします。",
   generator: "v0.app",
   icons: {
     icon: [

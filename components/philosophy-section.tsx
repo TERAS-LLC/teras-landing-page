@@ -14,43 +14,44 @@ export function PhilosophySection() {
             <div className="space-y-12">
               <div className="space-y-6">
                 <h3 className="text-2xl md:text-3xl font-light text-foreground leading-tight text-balance">
-                  複雑さを飼いならし、構造を生み出す力
+                  複雑さに向き合い、構造をつくる
                 </h3>
                 <p className="text-sm md:text-base font-light text-foreground leading-relaxed">
-                  The power to tame complexity and create structure.
+                  We face complexity head-on and build practical structure.
                 </p>
               </div>
 
               <div className="space-y-6 text-sm md:text-base font-light text-foreground leading-relaxed">
                 <p>
-                  TERAの名は、ギリシャ語で「怪物」「驚異」を意味する。私たちは、混沌とした複雑なシステムに立ち向かい、それを明確な構造へと変える存在だ。
+                  TERASの名は、ギリシャ語で「驚異」を意味するΤέραςに由来します。大規模で複雑なシステムの課題に正面から取り組み、明確な構造へと整理していくことが私たちの仕事です。
                 </p>
                 <p className="text-foreground italic text-xs md:text-sm">
-                  The name TERAS comes from the Greek word meaning "monster" or "prodigy." We are the force that
-                  confronts chaotic, complex systems and transforms them into clear structures.
+                  The name TERAS comes from the Greek word Τέρας, meaning "wonder." Our work is to take on the
+                  challenges of large, complex systems and organize them into clear, workable structures.
                 </p>
               </div>
             </div>
 
             <div className="space-y-12">
               <div className="space-y-6">
-                <h4 className="text-lg font-medium text-foreground">Engineering as Power</h4>
+                <h4 className="text-lg font-medium text-foreground">Engineering as Practice</h4>
                 <p className="text-sm font-light text-foreground leading-relaxed">
-                  開発とは、複雑さに秩序を与える行為だ。明確な境界、整然とした層、統制された流れ。
+                  開発とは、複雑さを整理し、扱いやすくする地道な作業です。適切な境界設計、責務の分離、データの流れの整備を一つひとつ積み重ねます。
                 </p>
                 <p className="text-xs font-light text-foreground leading-relaxed italic">
-                  Development is the act of giving order to complexity. Clear boundaries, organized layers, controlled
-                  flows.
+                  Development is the steady work of organizing complexity into something manageable — defining clear
+                  boundaries, separating responsibilities, and structuring data flows, one step at a time.
                 </p>
               </div>
 
               <div className="space-y-6">
                 <h4 className="text-lg font-medium text-foreground">Structure & Clarity</h4>
                 <p className="text-sm font-light text-foreground leading-relaxed">
-                  私たちは、曖昧さを排除し、明確な設計を通じてシステムに美しい秩序をもたらす。
+                  曖昧さを減らし、明確な設計を通じてシステム全体の見通しをよくします。誰が見ても理解できる構造を目指します。
                 </p>
                 <p className="text-xs font-light text-foreground leading-relaxed italic">
-                  We eliminate ambiguity and bring beautiful order to systems through clear design.
+                  We reduce ambiguity and improve visibility across the system through clear design, aiming for
+                  structures that any team member can understand.
                 </p>
               </div>
             </div>
@@ -58,7 +59,7 @@ export function PhilosophySection() {
 
           <div className="mt-24 pt-16 border-t border-foreground/10">
             <blockquote className="text-xl md:text-2xl font-light text-foreground leading-relaxed text-center max-w-3xl mx-auto text-balance">
-              "We do not observe chaos. We transform it into order."
+              "Understand complexity. Then organize it, step by step."
             </blockquote>
           </div>
         </div>

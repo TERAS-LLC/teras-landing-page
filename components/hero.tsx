@@ -148,23 +148,23 @@ export function Hero() {
             <img src="/teras-logo.svg" alt="TERAS" className="h-10 md:h-14 lg:h-16 mx-auto" />
 
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-relaxed text-balance">
-              複雑さに秩序をもたらす力
+              複雑なシステムを、わかりやすく
             </h1>
 
             <p className="text-sm md:text-base lg:text-lg font-light text-foreground leading-relaxed max-w-3xl mx-auto text-balance">
-              混沌とした複雑性を、明確な構造へと変える。
+              入り組んだシステムや組織の課題を整理し、
               <br />
-              開発を通じて、システムと組織に秩序と美しさをもたらす。
+              見通しのよい設計へ落とし込みます。
             </p>
           </div>
 
           <div className="pt-12 space-y-4">
             <p className="text-base md:text-lg font-light text-foreground italic">
-              The power to tame complexity and create structure.
+              Making complex systems manageable.
             </p>
             <p className="text-xs md:text-sm font-light text-foreground max-w-2xl mx-auto leading-relaxed">
-              We transform chaotic complexity into clear structure. Through development, we bring order and beauty to
-              your systems.
+              We help untangle complex systems and organizations, turning them into clear, well-structured designs that
+              teams can maintain and grow with confidence.
             </p>
           </div>
         </div>

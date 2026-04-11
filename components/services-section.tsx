@@ -5,21 +5,21 @@ export function ServicesSection() {
       title: "Architecture Design",
       titleJa: "アーキテクチャ設計",
       description:
-        "Evolutionary architecture patterns to decompose monoliths into maintainable, scalable systems. From monoliths to microservices, and everything in between.",
+        "モノリスの段階的な分割や、マイクロサービスへの移行設計を支援します。現状に合った実現可能なアーキテクチャを一緒に考え、保守しやすく拡張しやすいシステムを目指します。",
     },
     {
       number: "02",
       title: "Organization Development",
       titleJa: "組織開発",
       description:
-        "Design organizational structures that enable fast flow and minimize dependencies. Create stream-aligned teams with clear ownership and autonomous purpose.",
+        "開発のスピードを上げ、チーム間の依存を減らすための組織設計を行います。責任範囲が明確で、自律的に動けるチーム体制をつくります。",
     },
     {
       number: "03",
       title: "Technical Leadership",
       titleJa: "技術リーダーシップ",
       description:
-        "Strategic technical leadership on-demand. Fractional CTO services, architecture reviews, technical strategy, and hands-on guidance for scaling engineering organizations.",
+        "必要なときに必要なだけ、技術的な意思決定をサポートします。CTO代行、アーキテクチャレビュー、技術戦略の策定、開発組織の成長に向けた実践的なアドバイスを提供します。",
     },
   ]
 

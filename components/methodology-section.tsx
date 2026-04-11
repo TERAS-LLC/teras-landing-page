@@ -8,24 +8,24 @@ export function MethodologySection() {
   const methodologies = [
     {
       title: "Inverse Conway",
-      subtitle: "Architecture shapes organization",
-      description: "組織構造を望ましいアーキテクチャに合わせて再設計する",
+      subtitle: "Aligning teams with architecture",
+      description: "目指すアーキテクチャに合わせて、組織構造とチーム境界を設計し直します",
       details:
-        "Restructure your organization to match your desired architecture. Design team boundaries that enable true system modularity and autonomous flow.",
+        "Restructure your organization to match the architecture you need. Design team boundaries that support system modularity and independent delivery.",
     },
     {
       title: "Domain-Driven Design",
-      subtitle: "Clear boundaries, unified language",
-      description: "ビジネスドメインと技術実装を整合させる共通言語の確立",
+      subtitle: "Shared language, clear boundaries",
+      description: "ビジネスの言葉と技術の言葉を揃え、境界を明確にして開発しやすくします",
       details:
-        "Establish ubiquitous language and bounded contexts. Align business domains with technical implementation for maintainable, scalable systems.",
+        "Establish a shared language between business and engineering. Define bounded contexts so that each part of the system can be maintained and scaled independently.",
     },
     {
       title: "Team Topologies",
-      subtitle: "Optimized flow, minimal load",
-      description: "認知負荷を最小化し、フローを最大化するチーム設計",
+      subtitle: "Reducing friction, improving flow",
+      description: "チームの認知負荷を減らし、開発がスムーズに進む体制をつくります",
       details:
-        "Design team interactions that minimize cognitive load and maximize flow. Stream-aligned, platform, enabling, and complicated subsystem teams.",
+        "Design team structures and interactions that reduce cognitive load and improve delivery flow, using stream-aligned, platform, enabling, and complicated-subsystem team patterns.",
     },
   ]
 

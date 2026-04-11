@@ -11,7 +11,7 @@ export function Footer() {
                   <img src="/teras-mark.png" alt="" className="h-14 md:h-16" />
                   <img src="/teras-logo.svg" alt="TERAS" className="h-8 md:h-10 invert" />
                 </div>
-                <p className="text-sm font-light text-background/60 italic">Traces of the Future.</p>
+                <p className="text-sm font-light text-background/60 italic">BtoB SaaS Development Support</p>
               </div>
             </div>
 
