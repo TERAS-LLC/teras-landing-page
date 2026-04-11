@@ -43,7 +43,10 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="pt-8 md:pt-12">
-            <p className="text-xs font-light text-background/40">© 2025 LLC TERAS. All rights reserved.</p>
+            <p className="text-xs font-light text-background/40">
+              © 2025 LLC TERAS. All rights reserved.
+              <a href="/disclosure" className="ml-4 text-background/25 hover:text-background/40 transition-colors no-underline">Disclosure</a>
+            </p>
           </div>
         </div>
       </div>
