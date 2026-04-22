@@ -38,6 +38,9 @@
   --sidebar-accent-foreground: oklch(0 0 0);
   --sidebar-border: oklch(0.85 0 0);
   --sidebar-ring: oklch(0 0 0);
+
+  /* TERAS brand accent (cyan) — used for engineering-drawing details */
+  --teras-accent: oklch(0.72 0.17 215);
 }
 
 @theme inline {
@@ -88,6 +91,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px;
+    background-position: 0 0, 0 0;
   }
 
   /* Multiply blend mode for depth and layering */
@@ -131,5 +139,334 @@
 
   .animate-trace-float-slow {
     animation: trace-float-slow 60s ease-in-out infinite;
+  }
+
+  /* ============ TERAS section tick marks (engineering-drawing feel) ============ */
+  .tera-section {
+    position: relative;
+  }
+  .tera-section::before,
+  .tera-section::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 0;
+  }
+  .tera-section::before {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.35);
+    border-left: 1px solid rgba(0, 0, 0, 0.35);
+  }
+  .tera-section::after {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    border-right: 1px solid rgba(0, 0, 0, 0.35);
+  }
+
+  /* ============ Monospace eyebrow with cyan ">" prefix ============ */
+  .eyebrow-mono {
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow-mono::before {
+    content: ">";
+    color: var(--teras-accent);
+    font-weight: 700;
+  }
+
+  /* ============ Philosophy column label (monospace + cyan dot) ============ */
+  .phil-col-label {
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+  }
+  .phil-col-label::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--teras-accent);
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--teras-accent) 20%, transparent);
+  }
+
+  /* ============ Black CTA button ============ */
+  .btn-black {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    text-decoration: none;
+    border: 1px solid #000;
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+  .btn-black:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  /* ============ Vertical side copyright (Atrae-style) ============ */
+  .side-copy {
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    color: rgba(0, 0, 0, 0.45);
+    z-index: 40;
+    pointer-events: none;
+    user-select: none;
+  }
+  @media (max-width: 767px) {
+    .side-copy {
+      display: none;
+    }
+  }
+
+  /* ============ Header monospace nav ============ */
+  .nav-mono {
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    transition: all 200ms ease;
+    padding: 8px 14px;
+    border: 1px solid transparent;
+  }
+  .nav-mono:hover {
+    opacity: 0.7;
+  }
+  .nav-mono.active {
+    background: #000;
+    color: #fff;
+  }
+
+  /* ============ Monospace number label with cyan dot (METHOD · 01, SERVICE · 01) ============ */
+  .mono-num {
+    font-family: ui-monospace, "JetBrains Mono", Menlo, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+  }
+  .mono-num::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--teras-accent);
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--teras-accent) 22%, transparent);
+  }
+
+  /* ============ Methodology cell with cyan trace on hover ============ */
+  .meth-cell {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: background 500ms ease;
+  }
+  .meth-cell:hover {
+    background: rgba(0, 0, 0, 0.03);
+  }
+  .meth-cell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--teras-accent);
+    opacity: 0;
+    transition:
+      opacity 300ms ease,
+      width 400ms ease;
+  }
+  .meth-cell:hover::before {
+    opacity: 1;
+    width: 56px;
+  }
+
+  /* ============ Services row with cyan trace on hover ============ */
+  .svc-row {
+    position: relative;
+    transition: background 400ms ease;
+  }
+  .svc-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--teras-accent);
+    opacity: 0;
+    transition:
+      opacity 300ms ease,
+      width 400ms ease;
+  }
+  .svc-row:hover::before {
+    opacity: 1;
+    width: 72px;
+  }
+  .svc-row:hover {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.015), transparent);
+  }
+
+  /* ============ Footer 4-layer animated wave top edge ============ */
+  .ft-top-edge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 80px;
+    pointer-events: none;
+    transform: translateY(-100%);
+    overflow: hidden;
+  }
+  .ft-top-edge svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .ft-wave-fill {
+    fill: #000;
+  }
+  .ft-wave-accent {
+    fill: var(--teras-accent);
+    opacity: 0.95;
+  }
+  .ft-wave-accent-pale {
+    fill: var(--teras-accent);
+    opacity: 0.4;
+  }
+  .ft-wave-dark-mid {
+    fill: #0a0a0a;
+    opacity: 0.75;
+  }
+  @keyframes wave-drift-a {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-400px);
+    }
+  }
+  @keyframes wave-drift-b {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(300px);
+    }
+  }
+  @keyframes wave-drift-c {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-220px);
+    }
+  }
+  @keyframes wave-drift-d {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(180px);
+    }
+  }
+  .ft-wave-group-a {
+    animation: wave-drift-a 28s linear infinite;
+  }
+  .ft-wave-group-b {
+    animation: wave-drift-b 40s linear infinite;
+  }
+  .ft-wave-group-c {
+    animation: wave-drift-c 34s linear infinite;
+  }
+  .ft-wave-group-d {
+    animation: wave-drift-d 48s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ft-wave-group-a,
+    .ft-wave-group-b,
+    .ft-wave-group-c,
+    .ft-wave-group-d {
+      animation: none;
+    }
+  }
+
+  /* ============ Philosophy radial mask grid + silhouette layering ============ */
+  #philosophy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, #000 10%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, #000 10%, transparent 85%);
+    z-index: 0;
+  }
+  #philosophy > *:not(.sil),
+  #methodology > *:not(.sil),
+  #services > *:not(.sil) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ Section silhouette (dotted "01/02/03" backgrounds) ============ */
+  svg.sil {
+    position: absolute !important;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .sil circle,
+  .sil rect,
+  .sil path {
+    fill: rgba(0, 0, 0, 0.22);
   }
 }

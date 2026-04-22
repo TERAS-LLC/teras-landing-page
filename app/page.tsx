@@ -8,7 +8,7 @@ import { BackgroundParticles } from "@/components/background-particles"
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-background">
+    <main className="relative min-h-screen">
       <BackgroundParticles />
       <div className="relative z-10">
         <Header />

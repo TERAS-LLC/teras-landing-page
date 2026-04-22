@@ -12,7 +12,6 @@ export function Hero() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas size
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
@@ -21,108 +20,71 @@ export function Hero() {
     window.addEventListener("resize", resizeCanvas)
 
     interface Particle {
-      bandIndex: number
-      position: number
-      speed: number
-      radiusOffset: number
-      phaseOffset: number
-      weaveFreq: number
-      drift: number
+      ang: number
+      r01: number
+      sp: number
+      dir: 1 | -1
+      phase: number
+      wobble: number
       hue: number
+      sat: number
+      life: number
+      size: number
     }
 
-    const particles: Particle[] = []
-    const particleCount = 250
-    const numBands = 3
-
-    // Initialize particles with random offsets for organic motion
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        bandIndex: i % numBands,
-        position: (i / particleCount) * Math.PI * 2,
-        speed: 0.00005 + Math.pow(Math.random(), 3) * 0.012,
-        radiusOffset: (Math.random() - 0.5) * 0.5,
-        phaseOffset: Math.random() * Math.PI * 2,
-        weaveFreq: 1.5 + Math.random() * 4,
-        drift: (Math.random() - 0.5) * 0.001,
+    const N = 520
+    const ps: Particle[] = []
+    for (let i = 0; i < N; i++) {
+      ps.push({
+        ang: Math.random() * Math.PI * 2,
+        r01: Math.random(),
+        sp: 0.0006 + Math.pow(Math.random(), 2) * 0.004,
+        dir: Math.random() < 0.5 ? 1 : -1,
+        phase: Math.random() * Math.PI * 2,
+        wobble: 0.6 + Math.random() * 1.4,
         hue: Math.random() * 360,
+        sat: 55 + Math.random() * 30,
+        life: Math.random(),
+        size: 0.7 + Math.random() * 0.9,
       })
     }
 
-    let time = 0
+    let t = 0
     let animationFrame: number
 
-    // Function to calculate position on intertwined band
-    const getBandPosition = (particle: Particle, time: number) => {
+    const pos = (p: Particle) => {
       const cx = canvas.width / 2
-      const isMobile = canvas.width < 768
-      const cy = isMobile ? canvas.height * 0.35 : canvas.height / 2
-      const r = Math.min(canvas.width, canvas.height) * 0.45
-
-      const bandPhase = (particle.bandIndex / numBands) * Math.PI * 2
-      const weaveOffset = Math.sin(particle.position * particle.weaveFreq + bandPhase + particle.phaseOffset) * r * 0.25
-
-      const angle = particle.position + time * 0.5
-      const radius = r * (1 + particle.radiusOffset) + weaveOffset
-
-      const weaveFactor = Math.sin(angle * particle.weaveFreq + particle.phaseOffset) * r * 0.2
-      const noise1 = Math.sin(time * 2.3 + particle.phaseOffset) * r * 0.08
-      const noise2 = Math.cos(time * 1.7 + particle.phaseOffset * 1.3) * r * 0.06
-
-      const x = cx + Math.cos(angle) * radius + Math.cos(angle + Math.PI / 2) * weaveFactor + noise1
-      const y = cy + Math.sin(angle) * radius + Math.sin(angle + Math.PI / 2) * weaveFactor + noise2
-
-      return { x, y }
+      const mob = canvas.width < 768
+      const cy = mob ? canvas.height * 0.38 : canvas.height * 0.5
+      const R = Math.min(canvas.width, canvas.height) * 0.44
+      const hole = R * 0.42
+      const bandW = R - hole
+      const wobble = Math.sin(t * 0.4 + p.phase) * p.wobble * 0.06 * bandW
+      const r = hole + p.r01 * bandW + wobble
+      return { x: cx + Math.cos(p.ang) * r, y: cy + Math.sin(p.ang) * r }
     }
 
     const animate = () => {
-      // Clear canvas with subtle fade
-      ctx.fillStyle = "rgba(255, 255, 255, 0.05)"
+      ctx.fillStyle = "rgba(255,255,255,0.08)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
+      t += 0.01
+      const mob = canvas.width < 768
+      const alpha = mob ? 0.28 : 0.55
 
-      time += 0.01
+      ps.forEach((p) => {
+        p.life += 0.04 + Math.random() * 0.03
+        const draw = p.life % 1 < 0.55
+        p.ang += p.sp * p.dir
 
-      const isMobile = canvas.width < 768
-      const particleOpacity = isMobile ? 0.15 : 0.4
-      const lineOpacity = isMobile ? 0.03 : 0.08
-
-      particles.forEach((particle) => {
-        particle.position += particle.speed + particle.drift * Math.sin(time + particle.phaseOffset)
-
-        const pos = getBandPosition(particle, time)
-
-        const hue = (particle.hue + time * 20) % 360
-        ctx.beginPath()
-        ctx.arc(pos.x, pos.y, 2, 0, Math.PI * 2)
-        ctx.fillStyle = `hsla(${hue}, 80%, 55%, ${particleOpacity})`
-        ctx.fill()
-      })
-
-      // Draw connecting lines between particles on the same band
-      for (let bandIndex = 0; bandIndex < numBands; bandIndex++) {
-        const bandParticles = particles.filter((p) => p.bandIndex === bandIndex)
-
-        for (let i = 0; i < bandParticles.length - 1; i++) {
-          const p1 = bandParticles[i]
-          const p2 = bandParticles[i + 1]
-
-          const pos1 = getBandPosition(p1, time)
-          const pos2 = getBandPosition(p2, time)
-
-          const distance = Math.sqrt(Math.pow(pos2.x - pos1.x, 2) + Math.pow(pos2.y - pos1.y, 2))
-
-          const baseRadius = Math.min(canvas.width, canvas.height) * 0.45
-          if (distance < baseRadius * 0.5) {
-            const lineHue = (p1.hue + time * 20) % 360
-            ctx.strokeStyle = `hsla(${lineHue}, 70%, 60%, ${lineOpacity})`
-            ctx.lineWidth = 0.5
-            ctx.beginPath()
-            ctx.moveTo(pos1.x, pos1.y)
-            ctx.lineTo(pos2.x, pos2.y)
-            ctx.stroke()
-          }
+        if (draw) {
+          const q = pos(p)
+          const hue = (p.hue + t * 8) % 360
+          ctx.fillStyle = `hsla(${hue},${p.sat}%,60%,${alpha})`
+          ctx.beginPath()
+          ctx.arc(q.x, q.y, p.size, 0, Math.PI * 2)
+          ctx.fill()
         }
-      }
+      })
 
       animationFrame = requestAnimationFrame(animate)
     }
@@ -136,42 +98,38 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
-      {/* Generative art background */}
+    <section className="tera-section relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Content */}
-      <div className="container relative z-10 mx-auto px-6 lg:px-12 py-24">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          {/* Logo placement */}
-          <div className="space-y-8">
-            <img src="/teras-logo.svg" alt="TERAS" className="h-10 md:h-14 lg:h-16 mx-auto" />
+      <div className="relative z-10 max-w-[960px] mx-auto px-6 py-24 text-center">
+        <img src="/teras-logo.svg" alt="TERAS" className="h-10 md:h-14 lg:h-16 mx-auto mb-8" />
 
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-relaxed text-balance">
-              複雑なシステムを、わかりやすく
-            </h1>
+        <h1 className="text-2xl md:text-[30px] lg:text-4xl font-bold leading-[1.4] tracking-[-0.01em] mb-8 text-balance">
+          複雑なシステムを、わかりやすく
+        </h1>
 
-            <p className="text-sm md:text-base lg:text-lg font-light text-foreground leading-relaxed max-w-3xl mx-auto text-balance">
-              入り組んだシステムや組織の課題を整理し、
-              <br />
-              見通しのよい設計へ落とし込みます。
-            </p>
-          </div>
+        <p className="text-sm lg:text-lg leading-[1.75] max-w-[720px] mx-auto font-light text-balance">
+          入り組んだシステムや組織の課題を整理し、
+          <br />
+          見通しのよい設計へ落とし込みます。
+        </p>
 
-          <div className="pt-12 space-y-4">
-            <p className="text-base md:text-lg font-light text-foreground italic">
-              Making complex systems manageable.
-            </p>
-            <p className="text-xs md:text-sm font-light text-foreground max-w-2xl mx-auto leading-relaxed">
-              We help untangle complex systems and organizations, turning them into clear, well-structured designs that
-              teams can maintain and grow with confidence.
-            </p>
-          </div>
+        <div className="pt-12">
+          <p className="text-base lg:text-lg italic font-light mb-4">Making complex systems manageable.</p>
+          <p className="text-xs lg:text-sm font-light leading-[1.7] max-w-[640px] mx-auto">
+            We help untangle complex systems and organizations, turning them into clear, well-structured designs that
+            teams can maintain and grow with confidence.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          <a href="#contact" className="btn-black">
+            Get in touch →
+          </a>
         </div>
       </div>
 
-      {/* Bottom fade to create "the void" */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   )
 }

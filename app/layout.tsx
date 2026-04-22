@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
+        <div className="side-copy">© 2025 LLC TERAS, Inc.</div>
         <Analytics />
       </body>
     </html>
