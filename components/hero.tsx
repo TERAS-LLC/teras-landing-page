@@ -105,7 +105,7 @@ export function Hero() {
         <img src="/teras-logo.svg" alt="TERAS" className="h-10 md:h-14 lg:h-16 mx-auto mb-8" />
 
         <h1 className="text-2xl md:text-[30px] lg:text-4xl font-bold leading-[1.4] tracking-[-0.01em] mb-8 text-balance">
-          複雑なシステムを、わかりやすく
+          複雑なしくみを、シンプルに
         </h1>
 
         <p className="text-sm lg:text-lg leading-[1.75] max-w-[720px] mx-auto font-light text-balance">
