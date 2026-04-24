@@ -5,41 +5,45 @@ export function Footer() {
       <div className="ft-top-edge" aria-hidden="true">
         <svg viewBox="0 0 2400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            {/* D: far pale cyan — tallest peaks */}
+            {/* D: far pale cyan — large rolling wave */}
             <path
               id="ridgeD"
-              d="M0 74 L 100 58 L 200 70 L 320 48 L 430 66 L 540 54 L 660 72 L 780 44 L 890 68 L 1010 56 L 1130 74 L 1240 50 L 1360 66 L 1470 58 L 1580 75 L 1700 48 L 1820 70 L 1940 54 L 2050 74 L 2170 50 L 2280 66 L 2400 74 L 2400 120 L 0 120 Z"
+              d="M0 74 C 100 74 100 52 200 52 C 300 52 300 74 400 66 C 500 56 500 44 600 52 C 700 60 700 60 800 52 C 900 44 900 74 1000 74 C 1100 74 1100 54 1200 60 C 1300 68 1300 62 1400 54 C 1500 46 1500 54 1600 50 C 1700 46 1700 68 1800 64 C 1900 60 1900 58 2000 60 C 2100 62 2100 74 2200 74 C 2300 74 2300 74 2400 74 L 2400 120 L 0 120 Z"
             />
-            {/* C: mid bright cyan */}
+            {/* C: mid bright cyan — large wave offset from D */}
             <path
               id="ridgeC"
-              d="M0 84 L 80 70 L 180 80 L 280 62 L 390 82 L 490 66 L 600 86 L 710 60 L 810 76 L 920 68 L 1040 88 L 1150 64 L 1260 78 L 1360 70 L 1470 84 L 1580 62 L 1680 74 L 1790 68 L 1900 88 L 2010 62 L 2120 82 L 2230 66 L 2330 78 L 2400 84 L 2400 120 L 0 120 Z"
+              d="M0 84 C 120 84 120 66 240 66 C 360 66 360 84 480 78 C 600 72 600 62 720 68 C 840 74 840 74 960 66 C 1080 58 1080 84 1200 82 C 1320 80 1320 66 1440 72 C 1560 78 1560 74 1680 68 C 1800 62 1800 80 1920 74 C 2040 68 2040 72 2160 76 C 2280 80 2280 84 2400 84 L 2400 120 L 0 120 Z"
             />
-            {/* B: dark mid-ground ridge */}
+            {/* B: dark mid-ground */}
             <path
               id="ridgeB"
-              d="M0 96 L 90 86 L 200 98 L 300 80 L 410 94 L 520 84 L 640 100 L 740 78 L 850 92 L 960 84 L 1070 100 L 1180 82 L 1290 96 L 1400 86 L 1510 100 L 1620 80 L 1730 94 L 1840 84 L 1950 100 L 2060 82 L 2170 96 L 2270 88 L 2380 98 L 2400 96 L 2400 120 L 0 120 Z"
+              d="M0 96 C 90 96 90 84 180 84 C 270 84 270 96 360 90 C 450 85 450 80 540 84 C 630 88 630 88 720 82 C 810 76 810 96 900 94 C 990 92 990 82 1080 86 C 1170 90 1170 86 1260 82 C 1350 78 1350 88 1440 84 C 1530 80 1530 90 1620 86 C 1710 82 1710 90 1800 88 C 1890 86 1890 86 1980 88 C 2070 90 2070 96 2160 94 C 2250 92 2250 96 2400 96 L 2400 120 L 0 120 Z"
             />
-            {/* A: front black — shortest peaks */}
+            {/* A: front black — shortest */}
             <path
               id="ridgeA"
-              d="M0 108 L 110 100 L 220 108 L 340 94 L 450 106 L 560 102 L 670 110 L 790 92 L 900 106 L 1020 100 L 1140 111 L 1260 96 L 1370 108 L 1480 102 L 1590 110 L 1710 92 L 1820 106 L 1940 98 L 2050 108 L 2160 104 L 2280 110 L 2400 108 L 2400 120 L 0 120 Z"
+              d="M0 108 C 150 108 150 98 300 98 C 450 98 450 108 600 104 C 750 100 750 96 900 100 C 1050 104 1050 104 1200 98 C 1350 92 1350 108 1500 108 C 1650 108 1650 100 1800 104 C 1950 108 1950 106 2100 106 C 2250 106 2250 108 2400 108 L 2400 120 L 0 120 Z"
             />
           </defs>
-          {/* back to front: far pale cyan > bright cyan (mid) > dark grey > black (front, shortest) */}
+          {/* back to front. 3 tiles each (x=-2400, 0, 2400) for seamless drift in either direction */}
           <g className="ft-wave-group-d">
+            <use href="#ridgeD" className="ft-wave-accent-pale" x="-2400" />
             <use href="#ridgeD" className="ft-wave-accent-pale" x="0" />
             <use href="#ridgeD" className="ft-wave-accent-pale" x="2400" />
           </g>
           <g className="ft-wave-group-c">
+            <use href="#ridgeC" className="ft-wave-accent" x="-2400" />
             <use href="#ridgeC" className="ft-wave-accent" x="0" />
             <use href="#ridgeC" className="ft-wave-accent" x="2400" />
           </g>
           <g className="ft-wave-group-a">
+            <use href="#ridgeB" className="ft-wave-dark-mid" x="-2400" />
             <use href="#ridgeB" className="ft-wave-dark-mid" x="0" />
             <use href="#ridgeB" className="ft-wave-dark-mid" x="2400" />
           </g>
           <g className="ft-wave-group-b">
+            <use href="#ridgeA" className="ft-wave-fill" x="-2400" />
             <use href="#ridgeA" className="ft-wave-fill" x="0" />
             <use href="#ridgeA" className="ft-wave-fill" x="2400" />
           </g>

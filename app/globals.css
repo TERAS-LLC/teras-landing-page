@@ -433,16 +433,16 @@
     }
   }
   .ft-wave-group-a {
-    animation: wave-drift-a 28s linear infinite;
+    animation: wave-drift-a 14s linear infinite;
   }
   .ft-wave-group-b {
-    animation: wave-drift-b 40s linear infinite;
+    animation: wave-drift-b 20s linear infinite;
   }
   .ft-wave-group-c {
-    animation: wave-drift-c 34s linear infinite;
+    animation: wave-drift-c 17s linear infinite;
   }
   .ft-wave-group-d {
-    animation: wave-drift-d 48s linear infinite;
+    animation: wave-drift-d 24s linear infinite;
   }
   @media (prefers-reduced-motion: reduce) {
     .ft-wave-group-a,
