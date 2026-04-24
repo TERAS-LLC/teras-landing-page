@@ -374,10 +374,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: -1px;
+    bottom: calc(100% - 1px);
     height: 80px;
     pointer-events: none;
-    transform: translateY(-100%);
     overflow: hidden;
   }
   .ft-top-edge svg {
